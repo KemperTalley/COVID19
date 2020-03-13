@@ -24,8 +24,8 @@ pop = 330*10**6
 #location = 'Tennessee'
 #pop = 6.77*10**6
 #St. Louis
-location = 'Knox County'
-pop = 461860
+location = 'City of 1 million people'
+pop = 1000000
 
 #percent risk toleration
 risk_vals = [0.01, 0.02, 0.1, 0.5, 0.9]
@@ -44,8 +44,7 @@ for i in range(len(risk_vals)):
 ax.legend()
 #format axis to non-scientific notation below 1 million
 ax.yaxis.set_major_formatter(ticker.FuncFormatter(lambda y, _: '{:g}'.format(y)))
-
-
+ax.xaxis.set_major_formatter(ticker.FuncFormatter(lambda x, _: '{:g}'.format(x)))
 
 #fill below the 1 percent line    
 plt.fill_between(n, (1 - (1-risk_vals[0])**(1.0/n))*pop, color='lightgrey')
