@@ -49,7 +49,7 @@ ax.yaxis.set_major_formatter(ticker.FuncFormatter(lambda y, _: '{:g}'.format(y))
 
 #fill below the 1 percent line    
 plt.fill_between(n, (1 - (1-risk_vals[0])**(1.0/n))*pop, color='lightgrey')
-box_text = '  Less than 1% \n  chance of COVID-19 \n  positive attendee at the event'
+box_text = ' Less than 1% \n chance of COVID-19 \n positive attendee at the event'
 text_box = AnchoredText(box_text, frameon=False, loc=3, pad = 0.5)
 plt.setp(text_box.patch, facecolor = 'white', alpha = 0.5)
 ax.add_artist(text_box)
@@ -57,5 +57,5 @@ ax.add_artist(text_box)
 #print labels
 plt.ylabel('Active circulating infections in ' +location +' , $I$')
 plt.xlabel('Number of participants at given event \n Risk is $\epsilon$~1-(1-$p_i$)$^n$ where $p_i$ = $I/(pop)$ and n is event size')
-plt.title('Chance of a COVID-19 positive participant at an event in '+ location +' \n\n Assumes Incidence Homogeneity')
+plt.title('Chance of a COVID-19 positive participant at an event in '+ location +' \n\n Assumes Incidence Homogeneity in a population of '+str(pop))
 plt.grid(True)
