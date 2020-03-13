@@ -23,6 +23,9 @@ pop = 330*10**6
 #Tennessee
 #location = 'Tennessee'
 #pop = 6.77*10**6
+#St. Louis
+location = 'Knox County'
+pop = 461860
 
 #percent risk toleration
 risk_vals = [0.01, 0.02, 0.1, 0.5, 0.9]
@@ -54,5 +57,5 @@ ax.add_artist(text_box)
 #print labels
 plt.ylabel('Active circulating infections in ' +location +' , $I$')
 plt.xlabel('Number of participants at given event \n Risk is $\epsilon$~1-(1-$p_i$)$^n$ where $p_i$ = $I/(pop)$ and n is event size')
-plt.title('Chance of a COVID-19 positive participant at an event \n\n Assumes Incidence Homogeneity')
+plt.title('Chance of a COVID-19 positive participant at an event in '+ location +' \n\n Assumes Incidence Homogeneity')
 plt.grid(True)
