@@ -18,21 +18,20 @@ import numpy as np
 #setup variables for later use
 n=np.logspace(1,5,100)
 #population and location
-#location = 'USA'
-#pop = 330*10**6
+location = 'USA'
+pop = 330*10**6
 #Tennessee
-location = 'Tennessee'
-pop = 6.77*10**6
+#location = 'Tennessee'
+#pop = 6.77*10**6
 
 #percent risk toleration
 risk_vals = [0.01, 0.02, 0.1, 0.5, 0.9]
 
+#set-up plot and axes
 fig, ax = plt.subplots()
 ax.axis([10,100000,10,pop])
 
-
-
-
+#risk is e~1-(1-p_i)^n where p_i = I/(pop) and n is event size
 
 #draw risk lines
 for i in range(len(risk_vals)):
@@ -40,12 +39,7 @@ for i in range(len(risk_vals)):
     plt.loglog(n,pcrit_risk*pop, label=(str(risk_vals[i]*100) + ' % Chance'))
     
 ax.legend()
-
-#format the y-axis to be in non-scientific notation
-#for axis in [ax.xaxis, ax.yaxis]:
-#    formatter = ScalarFormatter()
-#    formatter.set_scientific(False)
-#    axis.set_major_formatter(formatter)
+#format axis to non-scientific notation below 1 million
 ax.yaxis.set_major_formatter(ticker.FuncFormatter(lambda y, _: '{:g}'.format(y)))
 
 
@@ -59,16 +53,6 @@ ax.add_artist(text_box)
 
 #print labels
 plt.ylabel('Active circulating infections in ' +location +' , $I$')
-#plt.yticks(labels=[10,100,1000,10000,100000,1000000])
-plt.xlabel('Number of participants at given event')
+plt.xlabel('Number of participants at given event \n Risk is $\epsilon$~1-(1-$p_i$)$^n$ where $p_i$ = $I/(pop)$ and n is event size')
 plt.title('Chance of a COVID-19 positive participant at an event \n\n Assumes Incidence Homogeneity')
 plt.grid(True)
-
-
-
-
-# For these scenarios, use the exact risk assuming homogeneity
-#for i in range(len(sizevec)):
-#   p_equiv = nvec/USpop;
-#   eps_equiv(i) = 1-(1-p_equiv).^sizevec(i);
-#   tmpt=text(sizevec(i)*(1-0.08*(i-1)),nvec*0.6,sprintf('%3.2g%% chance',eps_equiv(i)*100));
